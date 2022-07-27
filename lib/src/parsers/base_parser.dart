@@ -5,6 +5,7 @@ mixin MetadataKeys {
   static const keyDescription = 'description';
   static const keyImage = 'image';
   static const keyUrl = 'url';
+  static const keyCard = 'card';
 }
 
 mixin BaseMetadataParser {
@@ -12,6 +13,7 @@ mixin BaseMetadataParser {
   String? description;
   String? image;
   String? url;
+  String? card;
 
   Metadata parse() {
     final m = Metadata();
@@ -19,6 +21,7 @@ mixin BaseMetadataParser {
     m.description = description;
     m.image = image;
     m.url = url;
+    m.card = card;
     return m;
   }
 }
@@ -29,7 +32,8 @@ class Metadata with BaseMetadataParser, MetadataKeys {
     return (title != null &&
         description != null &&
         image != null &&
-        url != null);
+        url != null &&
+        card != null);
   }
 
   @override
@@ -43,6 +47,7 @@ class Metadata with BaseMetadataParser, MetadataKeys {
       MetadataKeys.keyDescription: description,
       MetadataKeys.keyImage: image,
       MetadataKeys.keyUrl: url,
+      MetadataKeys.keyCard: card,
     };
   }
 
@@ -56,6 +61,7 @@ class Metadata with BaseMetadataParser, MetadataKeys {
     m.description = json[MetadataKeys.keyDescription];
     m.image = json[MetadataKeys.keyImage];
     m.url = json[MetadataKeys.keyUrl];
+    m.card = json[MetadataKeys.keyCard];
     return m;
   }
 }

@@ -48,6 +48,18 @@ class TwitterCardParser with BaseMetadataParser {
         property: 'twitter:image',
       );
 
+  @override
+  String? get card =>
+      getProperty(
+        _document,
+        attribute: 'name',
+        property: 'twitter:card',
+      ) ??
+      getProperty(
+        _document,
+        property: 'twitter:card',
+      );
+
   /// Twitter Cards do not have a url property so get the url from [og:url], if available.
   @override
   String? get url => OpenGraphParser(_document).url;

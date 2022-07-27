@@ -23,6 +23,7 @@ class MetadataParser {
       output.description ??= p.description;
       output.image ??= p.image;
       output.url ??= p.url;
+      output.card ??= p.card;
 
       if (output.hasAllMetadata) {
         break;
